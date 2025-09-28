@@ -2,9 +2,11 @@ create table if not exists users (
                                      id uuid primary key,
                                      email varchar(255) unique not null,
     display_name varchar(255),
-    created_at timestamptz default now()
+    password_hash varchar(255) not null,
+    email_verified boolean default false not null,
+    created_at timestamptz default now() not null
     );
-
+create unique index if not exists uk_users_email on users(lower(email));
 create table if not exists surveys (
                                        id uuid primary key,
                                        owner_id uuid not null references users(id),
