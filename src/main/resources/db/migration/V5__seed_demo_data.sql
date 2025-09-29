@@ -1,6 +1,6 @@
 -- Demo-User
-INSERT INTO users (id, email, display_name)
-VALUES (gen_random_uuid(), 'demo@example.com', 'Demo User')
+INSERT INTO users (id, email, display_name, password_hash)
+VALUES (gen_random_uuid(), 'demo@example.com', 'Demo User', '#hash')
     ON CONFLICT (email) DO NOTHING;
 
 -- Demo-Survey
